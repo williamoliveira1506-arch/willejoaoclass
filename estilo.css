@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single+Ink:wght@100..900&display=swap');
 
 body{
-    background-color: #0d1117;
+    background-color: #000000d4;
 }
 
 span{
@@ -61,99 +61,71 @@ span{
   transform: scale(1.2);
 }
 
+/* MENU PRINCIPAL */
 #menu {
-	background: #0099CC;
-	background: linear-gradient(to bottom,  #00B8F5,  #4B2D3C);
+	background: linear-gradient(to bottom, #00B8F5, #4B2D3C);
 	height: 69px;
-	padding-right: 18px;
+	padding: 0 18px;
 	border-radius: 12px;
-}
-#menu ul, #menu li {
-	margin: 0 auto;
-	padding: 0;
-	list-style: none
-}
-#menu ul {
-	width: 100%;
-	text-align: right;
-}
-#menu li {
-	display: inline-block;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 	position: relative;
 }
+
+/* LOGO */
+.nav-logo img {
+	height: 55px;
+	width: auto;
+	border-radius: 8px;
+}
+
+/* LISTA PRINCIPAL */
+#menu {
+    background: #0099CC;
+    background: linear-gradient(to bottom,  #00739A,  #DD84B1);
+    height: 80px;
+    padding-right: 18px;
+    border-radius: 0px;
+}
+#menu ul, #menu li {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none
+}
+#menu ul {
+    width: 100%;
+    text-align: right;
+}
+#menu li {
+    display: inline-block;
+    position: relative;
+}
 #menu a {
-	display: block;
-	line-height: 69px;
-	padding: 0 14px;
-	text-decoration: none;
-	color: #FFFFFF;
-	font-size: 17px;
-	text-transform: capitalize;
+    display: block;
+    line-height: 80px;
+    padding: 0 14px;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 16px;
 }
 #menu a.dropdown-arrow:after {
-	content: "\25BE";
-	margin-left: 5px;
+    content: "\25BE";
+    margin-left: 5px;
 }
 #menu li a:hover {
-	color: #007197;
-	background: #0084B0;
+    color: #FFFFFF;
+    background: #0099CC;
 }
 #menu input {
-	display: none;
-	margin: 0;
-	padding: 0;
-	height: 69px;
-	width: 100%;
-	opacity: 0;
-	cursor: pointer
+    display: none;
+    margin: 0;
+    padding: 0;
+    height: 80px;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer
 }
 #menu label {
-	display: none;
-	line-height: 69px;
-	text-align: center;
-	position: absolute;
-	left: 35px
-}
-#menu label:before {
-	font-size: 1.6em;
-	color: #FFFFFF;
-	content: "\2261"; 
-	margin-left: 20px;
-}
-#menu ul.sub-menus{
-	height: auto;
-	overflow: hidden;
-	width: 170px;
-	background: #444444;
-	position: absolute;
-	z-index: 99;
-	display: none;
-}
-#menu ul.sub-menus li {
-	display: block;
-	text-align: left;
-	width: 100%;
-}
-#menu ul.sub-menus a {
-	color: #FFFFFF;
-	font-size: 16px;
-}
-#menu li:hover ul.sub-menus {
-	display: block
-}
-#menu ul.sub-menus a:hover{
-	background: #F2F2F2;
-	color: #444444;
-}
-@media screen and (max-width: 800px){
-	#menu {position:relative}
-	#menu ul {background:#444444;position:absolute;top:100%;right:0;left:0;z-index:3;height:auto;display:none;text-align:left;}
-	#menu ul.sub-menus {width:100%;position:static;}
-	#menu ul.sub-menus a {padding-left:30px;}
-	#menu li {display:block;float:none;width:auto;}
-	#menu input, #menu label {position:absolute;top:0;left:0;display:block}
-	#menu input {z-index:4}
-	#menu input:checked + label {color:#FFFFFF}
-	#menu input:checked + label:before {content:"\00d7"}
-	#menu input:checked ~ ul {display:block}
+    display: none;
 }
