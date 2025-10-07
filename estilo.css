@@ -1,131 +1,571 @@
-@import url('https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single+Ink:wght@100..900&display=swap');
+/* ============================================================
+   🧠 FONTES E CONFIGURAÇÕES GERAIS
+============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Orbitron:wght@600&display=swap');
 
-body{
-    background-color: #000000d4;
+html {
+  scroll-behavior: smooth; /* Rolagem suave ao clicar nos links */
 }
 
-span{
-    color: blue;
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #050505;
+  color: #f0f0f0;
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 
-.nav-links li a{
-    text-decoration: none;
-    color: #fff;
-    list-style-type: none;
-    
+/* Aplica transição de aparição da página */
+body.page-loaded {
+  opacity: 1;
 }
 
-
-.nav-logo img{
-    width:50px ;
+/* ============================================================
+   🎯 MENU (NAVBAR FIXA)
+============================================================ */
+#menu {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: rgba(10, 10, 15, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: background 0.3s ease;
 }
 
-.container img{
-    width: 200px;
+/* Menu muda a cor ao rolar a página */
+#menu.scrolled {
+  background: rgba(5, 5, 10, 0.9);
 }
 
-.tecnologias {
+/* Logo do menu */
+.nav-logo img {
+  height: 55px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.nav-logo img:hover {
+  transform: scale(1.05);
+}
+
+/* Links do menu */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+}
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Linha animada sob o link */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px; left: 0;
+  width: 0%;
+  height: 2px;
+  background: #00ffff;
+  transition: width 0.3s ease;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Botão "Fale Comigo" no menu */
+.nav-links .menu-btn {
+  background: #00ffff;
+  color: #000;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.nav-links .menu-btn:hover {
+  background: #00bcd4;
+  transform: scale(1.05);
+}
+
+/* Menu hambúrguer (mobile) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+.menu-toggle span {
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   💫 HERO SECTION
+============================================================ */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 60px 20px;
-  background-color: #0d1117;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fundo animado */
+.hero-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at top, #001f2b, #000);
+  background-size: 200% 200%;
+  animation: heroGradient 8s infinite alternate ease-in-out;
+  z-index: -1;
+}
+@keyframes heroGradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 20px;
+}
+.hero-content h1 {
+  font-size: 3rem;
+  font-family: 'Orbitron', sans-serif;
   color: #fff;
 }
+.hero-content h1 span {
+  color: #00ffff;
+}
+.hero-content p {
+  color: #ccc;
+  font-size: 1.2rem;
+  margin-bottom: 35px;
+}
 
+/* Botão com brilho */
+.btn-glow {
+  display: inline-block;
+  background: linear-gradient(90deg, #00ffff, #0078ff);
+  color: #000;
+  padding: 14px 35px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+.btn-glow:hover {
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+  transform: scale(1.05);
+}
+
+/* ============================================================
+   ⚙️ TECNOLOGIAS
+============================================================ */
+.tecnologias {
+  text-align: center;
+  padding: 100px 20px;
+  background: #0a0a0a;
+}
 .tecnologias h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
-  color: #00bcd4;
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffff;
+  font-size: 2rem;
+  margin-bottom: 15px;
 }
-
-.tecnologias p {
-  max-width: 600px;
-  margin: 0 auto 40px;
-  font-size: 1.1em;
-  line-height: 1.6;
-}
-
 .tech-icons {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 25px;
+  gap: 30px;
+  margin-top: 40px;
 }
-
 .tech-icons img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   transition: transform 0.3s ease;
 }
-
 .tech-icons img:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
 }
 
-/* MENU PRINCIPAL */
-#menu {
-	background: linear-gradient(to bottom, #00B8F5, #4B2D3C);
-	height: 69px;
-	padding: 0 18px;
-	border-radius: 12px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	position: relative;
+/* ============================================================
+   💻 PROJETOS
+============================================================ */
+.projetos {
+  padding: 100px 20px;
+  background: linear-gradient(180deg, #060606, #0a0a0a);
+  text-align: center;
+}
+.section-title {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffff;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+.section-subtitle {
+  color: #aaa;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+}
+.projetos-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
 }
 
-/* LOGO */
-.nav-logo img {
-	height: 55px;
-	width: auto;
-	border-radius: 8px;
+/* Card individual */
+.card-projeto {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 18px;
+  width: 300px;
+  height: 250px;
+  padding: 25px;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 20px rgba(0,255,255,0.05);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s forwards;
+}
+.card-projeto:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px rgba(0,255,255,0.3);
+}
+.card-content h3 {
+  color: #00ffff;
+  margin-bottom: 10px;
+}
+.card-content p {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+.btn-card {
+  background: #00ffff;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-card:hover {
+  background: #00bcd4;
+  transform: scale(1.05);
 }
 
-/* LISTA PRINCIPAL */
-#menu {
-    background: #0099CC;
-    background: linear-gradient(to bottom,  #00739A,  #DD84B1);
-    height: 80px;
-    padding-right: 18px;
-    border-radius: 0px;
+/* ============================================================
+   👨‍💻 SOBRE MIM
+============================================================ */
+.sobre-mim {
+  background: radial-gradient(circle at top, #0a0a0a, #000);
+  padding: 100px 20px;
+  text-align: center;
 }
-#menu ul, #menu li {
-    margin: 0 auto;
-    padding: 0;
-    list-style: none
+.sobre-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
 }
-#menu ul {
+.foto-sobre img {
+  width: 250px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0,255,255,0.3);
+  transition: transform 0.3s ease;
+}
+.foto-sobre img:hover {
+  transform: scale(1.05);
+}
+.texto-sobre {
+  max-width: 500px;
+  color: #ddd;
+  line-height: 1.8;
+}
+.texto-sobre strong {
+  color: #00ffff;
+}
+
+/* ============================================================
+   📜 CERTIFICADOS
+============================================================ */
+.certificados {
+  padding: 100px 20px;
+  background: linear-gradient(180deg, #050505, #0d0d0d);
+  text-align: center;
+}
+.certificados-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+.certificado-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0,255,255,0.2);
+  border-radius: 18px;
+  padding: 30px;
+  width: 260px;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 15px rgba(0,255,255,0.1);
+}
+.certificado-card:hover {
+  box-shadow: 0 0 30px rgba(0,255,255,0.4);
+  transform: translateY(-8px);
+}
+.certificado-card img {
+  width: 60px;
+  margin-bottom: 15px;
+}
+.certificado-card h3 {
+  color: #00ffff;
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   🧩 CORREÇÃO FINAL DO CORTE DO MENU FIXO
+============================================================ */
+#tecnologias::before,
+#projetos::before,
+#sobremim::before,
+#certificados::before,
+#falecomigo::before {
+  content: "";
+  display: block;
+  height: 100px;       /* altura igual à do menu fixo */
+  margin-top: -100px;  /* desloca visualmente pra não criar buraco */
+  visibility: hidden;  /* invisível ao usuário */
+}
+
+/* ============================================================
+   💬 FALE COMIGO
+============================================================ */
+.falecomigo {
+  background: #070707;
+  padding: 120px 20px;
+  text-align: center;
+}
+.contato-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.contato-card {
+  position: relative;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(0,255,255,0.15);
+  border-radius: 20px;
+  width: 280px;
+  padding: 40px 25px;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 25px rgba(0,255,255,0.1);
+  overflow: hidden;
+}
+.contato-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 35px rgba(0,255,255,0.3);
+}
+.contato-card img {
+  width: 60px;
+  margin-bottom: 15px;
+}
+.contato-card h3 {
+  color: #00ffff;
+  margin-bottom: 10px;
+}
+
+/* Borda animada neon */
+.neon-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(60deg, #00ffff, #0078ff, #00ffff);
+  background-size: 300% 300%;
+  animation: neonAnim 6s infinite linear;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+@keyframes neonAnim {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* ============================================================
+   ⚡ BOTÃO VOLTAR AO TOPO
+============================================================ */
+#btn-topo {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00ffff, #0078ff);
+  color: #000;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  z-index: 999;
+}
+#btn-topo.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+#btn-topo:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(0,255,255,0.8);
+}
+
+/* ============================================================
+   🦾 FOOTER
+============================================================ */
+.footer {
+  background: linear-gradient(180deg, #111, #000);
+  padding: 80px 20px;
+  color: #ccc;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+  max-width: 1100px;
+  margin: auto;
+}
+.footer h3 {
+  color: #00ffff;
+  margin-bottom: 15px;
+}
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: #00ffff;
+}
+
+/* Ícones sociais */
+.social-icons-footer img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-right: 10px;
+  filter: brightness(0.8);
+  transition: all 0.3s ease;
+}
+.social-icons-footer img:hover {
+  filter: brightness(1.3);
+  transform: scale(1.1);
+}
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 40px;
+  padding-top: 15px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* ============================================================
+   📱 RESPONSIVIDADE
+============================================================ */
+@media (max-width: 900px) {
+  .nav-links {
+    position: absolute;
+    top: 80px; right: 0;
+    background: rgba(5,5,10,0.95);
+    flex-direction: column;
     width: 100%;
-    text-align: right;
-}
-#menu li {
-    display: inline-block;
-    position: relative;
-}
-#menu a {
-    display: block;
-    line-height: 80px;
-    padding: 0 14px;
-    text-decoration: none;
-    color: #FFFFFF;
-    font-size: 16px;
-}
-#menu a.dropdown-arrow:after {
-    content: "\25BE";
-    margin-left: 5px;
-}
-#menu li a:hover {
-    color: #FFFFFF;
-    background: #0099CC;
-}
-#menu input {
+    text-align: center;
     display: none;
-    margin: 0;
-    padding: 0;
-    height: 80px;
-    width: 100%;
-    opacity: 0;
-    cursor: pointer
+  }
+  .nav-links.open {
+    display: flex;
+    animation: fadeInUp 0.5s forwards;
+  }
+  .menu-toggle { display: flex; }
+
+  .projetos-cards,
+  .certificados-cards,
+  .contato-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sobre-container {
+    flex-direction: column;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
 }
-#menu label {
-    display: none;
+
+/* ============================================================
+   ⚙️ ANIMAÇÕES GERAIS
+============================================================ */
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
 }
+
+/* ============================================================
+   🧱 MARGEM INVISÍVEL LATERAL PARA EVITAR SOBREPOSIÇÃO
+============================================================ */
+body {
+  overflow-y: scroll;   /* mantém o layout estável com a barra de rolagem */
+  padding-right: 0;     /* remove o excesso de margem invisível */
+  box-sizing: border-box;
+}
+
+/* Menu e rodapé centralizados corretamente */
+#menu, .footer, #btn-topo {
+  padding-right: clamp(20px, 4vw, 30px);
+}
+#menu {
+  padding-left: clamp(20px, 4vw, 30px);
+}
+
+/* ============================================================
+   🎯 AJUSTE FINAL CONTRA CORTES NO TOPO DAS SEÇÕES
+============================================================ */
+
+/* Esse código reserva um "espaço invisível" acima das seções
+   para evitar que o menu fixo cubra os títulos ao clicar nos links */
+section {
+  scroll-margin-top: 110px; /* espaço reservado */
+}
+
+/* ============================================================
+   💡 EXPLICAÇÃO
+   Quando você clica em um link, o navegador rola até o elemento
+   mas deixa uma margem de 110px no topo — o mesmo tamanho do menu fixo.
+============================================================ */
