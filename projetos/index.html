@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Studies â€¢ Projetos</title>
+  <link rel="stylesheet" href="../estilo.css" />
+  <style>.cs{max-width:900px;margin:120px auto 80px;padding:0 20px}.cs h1{font-family:'Orbitron',sans-serif;color:#00ffff}.grid{display:grid;gap:14px}</style>
+</head>
+<body>
+  <nav id="menu" role="navigation" aria-label="Navegação principal">
+  <div class="nav-logo"><a href="../index.html#inicio"><img src="/willejoaoclass/assets/imgs/Logo_Williams_F1.png" alt="Logo"></a></div>
+  <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="../index.html#tecnologias">Tecnologias</a></li>
+    <li><a href="../index.html#projetos">Projetos</a></li>
+    <li><a href="../index.html#sobremim">Sobre mim</a></li>
+    <li><a href="../index.html#certificados">Certificados</a></li>
+    <li><a href="../index.html#falecomigo" class="menu-btn">Fale Comigo</a></li>
+  </ul>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">🌙</button>
+</nav>
+  <main class="cs">
+    <h1>Case Studies</h1>
+    <div class="grid">
+      <a class="btn-glow" href="./kanban.html">Kanban Board</a>
+      <a class="btn-glow" href="./quiz-pro.html">Quiz Pro</a>
+      <a class="btn-glow" href="./dashboard-financeiro.html">Dashboard Financeiro</a>
+      <a class="btn-glow" href="./notas-markdown.html">Notas Markdown</a>
+      <a class="btn-glow" href="./conversor.html">Conversor</a>
+      <a class="btn-glow" href="./lista-de-tarefas.html">Lista de Tarefas</a>
+      <a class="btn-glow" href="./gerador-de-senhas.html">Gerador de Senhas</a>
+      <a class="btn-glow" href="./calculadora.html">Calculadora</a>
+    </div>
+  </main>`n  <script>window.addEventListener('load',()=>document.body.classList.add('page-loaded'));</script>
+<script>(function(){const key="theme-preference";const btn=document.getElementById("theme-toggle");const saved=localStorage.getItem(key);if(saved==="light") document.body.classList.add("light");if(btn){btn.textContent=document.body.classList.contains("light")?"☀️":"🌙";btn.addEventListener("click",()=>{document.body.classList.toggle("light");const l=document.body.classList.contains("light");try{localStorage.setItem(key,l?"light":"dark");}catch(e){}btn.textContent=l?"☀️":"🌙";});}})();</script></body>
+</html>
+
+
+

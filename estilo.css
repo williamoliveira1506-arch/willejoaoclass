@@ -1,10 +1,10 @@
-/* ============================================================
-   🧠 FONTES E CONFIGURAÇÕES GERAIS
+﻿/* ============================================================
+   ðŸ§  FONTES E CONFIGURAÃ‡Ã•ES GERAIS
 ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Orbitron:wght@600&display=swap');
 
 html {
-  scroll-behavior: smooth; /* Rolagem suave ao clicar nos links */
+  scroll-behavior: smooth;
 }
 
 body {
@@ -16,13 +16,51 @@ body {
   transition: opacity 1s ease;
 }
 
-/* Aplica transição de aparição da página */
 body.page-loaded {
   opacity: 1;
 }
 
+/* Acessibilidade: skip link e focus */
+.skip-link {
+  position: absolute; left: -9999px; top: 0; background: #00ffff; color: #000;
+  padding: 10px 14px; border-radius: 8px; z-index: 2000;
+}
+.skip-link:focus { left: 20px; top: 20px; outline: 2px solid #0078ff; }
+
+:focus-visible { outline: 2px solid #00ffff; outline-offset: 2px; }
+
+/* Tema claro bÃ¡sico */
+body.light { background: #f4f7fb; color: #0e1b2b; }
+body.light #menu { background: rgba(255,255,255,0.8); border-bottom-color: rgba(0,0,0,0.08); }
+body.light .hero-bg { background: radial-gradient(circle at top, #e9f6ff, #cfe8ff); }
+body.light .section-title { color: #005b8f; }
+body.light .btn-glow { color: #fff; background: linear-gradient(90deg,#0078ff,#00bcd4); }
+body.light .card-projeto,
+body.light .contato-card,
+body.light .certificado-card { background: rgba(255,255,255,0.85); border-color: rgba(0,0,0,0.08); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+body.light .card-content p { color: #333; }
+body.light .footer { background: linear-gradient(180deg,#f5f7fa,#e9eff5); color:#333; }
+body.light .footer h3 { color:#005b8f; }
+body.light .footer-links a { color:#005b8f; }
+body.light #btn-topo { color:#fff }
+
+/* Toggle do tema */
+.theme-toggle {
+  margin-left: 12px;
+  background: rgba(0,255,255,0.15);
+  border: 1px solid rgba(0,255,255,0.35);
+  color: #00ffff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+body.light .theme-toggle { color:#0078ff; background:#e8f3ff; border-color: rgba(0,120,255,0.25); }
+
 /* ============================================================
-   🎯 MENU (NAVBAR FIXA)
+   ðŸŽ¯ MENU (NAVBAR FIXA)
 ============================================================ */
 #menu {
   position: fixed;
@@ -41,28 +79,27 @@ body.page-loaded {
   transition: background 0.3s ease;
 }
 
-/* Menu muda a cor ao rolar a página */
 #menu.scrolled {
   background: rgba(5, 5, 10, 0.9);
 }
 
-/* Logo do menu */
 .nav-logo img {
   height: 55px;
   border-radius: 10px;
   transition: transform 0.3s ease;
 }
+
 .nav-logo img:hover {
   transform: scale(1.05);
 }
 
-/* Links do menu */
 .nav-links {
   list-style: none;
   display: flex;
   gap: 30px;
-  margin: 0;
+  margin: 50px;
 }
+
 .nav-links a {
   color: #fff;
   text-decoration: none;
@@ -71,7 +108,7 @@ body.page-loaded {
   transition: color 0.3s ease;
 }
 
-/* Linha animada sob o link */
+/* Linha sob os links */
 .nav-links a::after {
   content: "";
   position: absolute;
@@ -81,11 +118,12 @@ body.page-loaded {
   background: #00ffff;
   transition: width 0.3s ease;
 }
+
 .nav-links a:hover::after {
   width: 100%;
 }
 
-/* Botão "Fale Comigo" no menu */
+/* BotÃ£o do menu */
 .nav-links .menu-btn {
   background: #00ffff;
   color: #000;
@@ -94,18 +132,20 @@ body.page-loaded {
   font-weight: 600;
   transition: all 0.3s ease;
 }
+
 .nav-links .menu-btn:hover {
   background: #00bcd4;
   transform: scale(1.05);
 }
 
-/* Menu hambúrguer (mobile) */
+/* Menu mobile */
 .menu-toggle {
   display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
 }
+
 .menu-toggle span {
   width: 28px;
   height: 3px;
@@ -114,7 +154,7 @@ body.page-loaded {
 }
 
 /* ============================================================
-   💫 HERO SECTION
+   ðŸ’« HERO (CABEÃ‡ALHO)
 ============================================================ */
 .hero {
   height: 100vh;
@@ -126,7 +166,15 @@ body.page-loaded {
   overflow: hidden;
 }
 
-/* Fundo animado */
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
 .hero-bg {
   position: absolute;
   top: 0; left: 0;
@@ -136,6 +184,7 @@ body.page-loaded {
   animation: heroGradient 8s infinite alternate ease-in-out;
   z-index: -1;
 }
+
 @keyframes heroGradient {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
@@ -145,21 +194,23 @@ body.page-loaded {
   max-width: 800px;
   padding: 20px;
 }
+
 .hero-content h1 {
   font-size: 3rem;
   font-family: 'Orbitron', sans-serif;
   color: #fff;
 }
+
 .hero-content h1 span {
   color: #00ffff;
 }
+
 .hero-content p {
   color: #ccc;
   font-size: 1.2rem;
   margin-bottom: 35px;
 }
 
-/* Botão com brilho */
 .btn-glow {
   display: inline-block;
   background: linear-gradient(90deg, #00ffff, #0078ff);
@@ -171,25 +222,28 @@ body.page-loaded {
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
   transition: all 0.3s ease;
 }
+
 .btn-glow:hover {
   box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
   transform: scale(1.05);
 }
 
 /* ============================================================
-   ⚙️ TECNOLOGIAS
+   âš™ï¸ TECNOLOGIAS
 ============================================================ */
 .tecnologias {
   text-align: center;
   padding: 100px 20px;
   background: #0a0a0a;
 }
+
 .tecnologias h2 {
   font-family: 'Orbitron', sans-serif;
   color: #00ffff;
   font-size: 2rem;
   margin-bottom: 15px;
 }
+
 .tech-icons {
   display: flex;
   justify-content: center;
@@ -197,69 +251,74 @@ body.page-loaded {
   gap: 30px;
   margin-top: 40px;
 }
+
 .tech-icons img {
   width: 70px;
   height: 70px;
   transition: transform 0.3s ease;
 }
+
 .tech-icons img:hover {
   transform: scale(1.15);
 }
 
 /* ============================================================
-   💻 PROJETOS
+   ðŸ’» PROJETOS
 ============================================================ */
 .projetos {
   padding: 100px 20px;
   background: linear-gradient(180deg, #060606, #0a0a0a);
   text-align: center;
 }
+
 .section-title {
   font-family: 'Orbitron', sans-serif;
   color: #00ffff;
   font-size: 2.2rem;
   margin-bottom: 10px;
 }
+
 .section-subtitle {
   color: #aaa;
   font-size: 1.1rem;
   margin-bottom: 50px;
 }
-.projetos-cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
-}
 
-/* Card individual */
+.projetos-cards { display: grid; grid-template-columns: repeat(4, minmax(240px, 1fr)); gap: 30px; justify-items: stretch; align-items: stretch; }
+
 .card-projeto {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(0, 255, 255, 0.2);
   border-radius: 18px;
-  width: 300px;
+  width: auto;
   height: 250px;
   padding: 25px;
-  transition: all 0.4s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, opacity 0.4s ease;
   box-shadow: 0 0 20px rgba(0,255,255,0.05);
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 0.8s forwards;
 }
+
 .card-projeto:hover {
-  transform: translateY(-10px);
+  transform: translateY(-10px) rotateX(2deg) rotateY(-2deg);
   box-shadow: 0 0 25px rgba(0,255,255,0.3);
 }
+
+.card-projeto.in-view { opacity: 1; transform: translateY(0); animation: none; }
+
 .card-content h3 {
   color: #00ffff;
   margin-bottom: 10px;
 }
+
 .card-content p {
   color: #ccc;
   font-size: 0.95rem;
   margin-bottom: 20px;
 }
+
 .btn-card {
   background: #00ffff;
   color: #000;
@@ -269,19 +328,21 @@ body.page-loaded {
   font-weight: 600;
   transition: all 0.3s ease;
 }
+
 .btn-card:hover {
   background: #00bcd4;
   transform: scale(1.05);
 }
 
 /* ============================================================
-   👨‍💻 SOBRE MIM
+   ðŸ‘¨â€ðŸ’» SOBRE MIM
 ============================================================ */
 .sobre-mim {
   background: radial-gradient(circle at top, #0a0a0a, #000);
   padding: 100px 20px;
   text-align: center;
 }
+
 .sobre-container {
   display: flex;
   flex-wrap: wrap;
@@ -289,38 +350,44 @@ body.page-loaded {
   align-items: center;
   gap: 60px;
 }
+
 .foto-sobre img {
   width: 250px;
   border-radius: 15px;
   box-shadow: 0 0 25px rgba(0,255,255,0.3);
   transition: transform 0.3s ease;
 }
+
 .foto-sobre img:hover {
   transform: scale(1.05);
 }
+
 .texto-sobre {
   max-width: 500px;
   color: #ddd;
   line-height: 1.8;
 }
+
 .texto-sobre strong {
   color: #00ffff;
 }
 
 /* ============================================================
-   📜 CERTIFICADOS
+   ðŸ“œ CERTIFICADOS
 ============================================================ */
 .certificados {
   padding: 100px 20px;
   background: linear-gradient(180deg, #050505, #0d0d0d);
   text-align: center;
 }
+
 .certificados-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
 }
+
 .certificado-card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(0,255,255,0.2);
@@ -330,48 +397,38 @@ body.page-loaded {
   transition: all 0.4s ease;
   box-shadow: 0 0 15px rgba(0,255,255,0.1);
 }
+
 .certificado-card:hover {
   box-shadow: 0 0 30px rgba(0,255,255,0.4);
   transform: translateY(-8px);
 }
+
 .certificado-card img {
   width: 60px;
   margin-bottom: 15px;
 }
+
 .certificado-card h3 {
   color: #00ffff;
   margin-bottom: 8px;
 }
 
 /* ============================================================
-   🧩 CORREÇÃO FINAL DO CORTE DO MENU FIXO
-============================================================ */
-#tecnologias::before,
-#projetos::before,
-#sobremim::before,
-#certificados::before,
-#falecomigo::before {
-  content: "";
-  display: block;
-  height: 100px;       /* altura igual à do menu fixo */
-  margin-top: -100px;  /* desloca visualmente pra não criar buraco */
-  visibility: hidden;  /* invisível ao usuário */
-}
-
-/* ============================================================
-   💬 FALE COMIGO
+   ðŸ’¬ FALE COMIGO
 ============================================================ */
 .falecomigo {
   background: #070707;
   padding: 120px 20px;
   text-align: center;
 }
+
 .contato-cards {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 40px;
 }
+
 .contato-card {
   position: relative;
   background: rgba(255,255,255,0.04);
@@ -383,20 +440,23 @@ body.page-loaded {
   box-shadow: 0 0 25px rgba(0,255,255,0.1);
   overflow: hidden;
 }
+
 .contato-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 0 35px rgba(0,255,255,0.3);
 }
+
 .contato-card img {
   width: 60px;
   margin-bottom: 15px;
 }
+
 .contato-card h3 {
   color: #00ffff;
   margin-bottom: 10px;
 }
 
-/* Borda animada neon */
+/* Borda neon animada */
 .neon-border {
   position: absolute;
   inset: 0;
@@ -409,13 +469,14 @@ body.page-loaded {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
+
 @keyframes neonAnim {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
 
 /* ============================================================
-   ⚡ BOTÃO VOLTAR AO TOPO
+   âš¡ BOTÃƒO VOLTAR AO TOPO (CORRIGIDO)
 ============================================================ */
 #btn-topo {
   position: fixed;
@@ -433,24 +494,42 @@ body.page-loaded {
   pointer-events: none;
   transition: all 0.4s ease;
   z-index: 999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  box-sizing: border-box;
+
+  line-height: 0;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
+
 #btn-topo.show {
   opacity: 1;
   pointer-events: auto;
 }
+
 #btn-topo:hover {
   transform: scale(1.1);
   box-shadow: 0 0 25px rgba(0,255,255,0.8);
 }
 
 /* ============================================================
-   🦾 FOOTER
+   ðŸ¦¾ FOOTER
 ============================================================ */
 .footer {
   background: linear-gradient(180deg, #111, #000);
   padding: 80px 20px;
   color: #ccc;
 }
+
 .footer-container {
   display: flex;
   justify-content: space-between;
@@ -459,32 +538,35 @@ body.page-loaded {
   max-width: 1100px;
   margin: auto;
 }
+
 .footer h3 {
   color: #00ffff;
   margin-bottom: 15px;
 }
+
 .footer-links a {
   color: #fff;
   text-decoration: none;
   transition: color 0.3s;
 }
+
 .footer-links a:hover {
   color: #00ffff;
 }
 
-/* Ícones sociais */
 .social-icons-footer img {
   width: 40px;
   height: 40px;
-  object-fit: contain;
   margin-right: 10px;
   filter: brightness(0.8);
   transition: all 0.3s ease;
 }
+
 .social-icons-footer img:hover {
   filter: brightness(1.3);
   transform: scale(1.1);
 }
+
 .footer-bottom {
   text-align: center;
   border-top: 1px solid rgba(255,255,255,0.1);
@@ -495,7 +577,7 @@ body.page-loaded {
 }
 
 /* ============================================================
-   📱 RESPONSIVIDADE
+   ðŸ“± RESPONSIVIDADE
 ============================================================ */
 @media (max-width: 900px) {
   .nav-links {
@@ -507,10 +589,12 @@ body.page-loaded {
     text-align: center;
     display: none;
   }
+
   .nav-links.open {
     display: flex;
     animation: fadeInUp 0.5s forwards;
   }
+
   .menu-toggle { display: flex; }
 
   .projetos-cards,
@@ -520,10 +604,7 @@ body.page-loaded {
     align-items: center;
   }
 
-  .sobre-container {
-    flex-direction: column;
-  }
-
+  .sobre-container,
   .footer-container {
     flex-direction: column;
     text-align: center;
@@ -531,41 +612,88 @@ body.page-loaded {
 }
 
 /* ============================================================
-   ⚙️ ANIMAÇÕES GERAIS
+   âš™ï¸ ANIMAÃ‡Ã•ES GERAIS
 ============================================================ */
 @keyframes fadeInUp {
   to { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================================
-   🧱 MARGEM INVISÍVEL LATERAL PARA EVITAR SOBREPOSIÇÃO
+   ðŸ§± AJUSTES FINAIS
 ============================================================ */
 body {
-  overflow-y: scroll;   /* mantém o layout estável com a barra de rolagem */
-  padding-right: 0;     /* remove o excesso de margem invisível */
+  overflow-y: scroll;
   box-sizing: border-box;
 }
 
-/* Menu e rodapé centralizados corretamente */
-#menu, .footer, #btn-topo {
-  padding-right: clamp(20px, 4vw, 30px);
-}
-#menu {
-  padding-left: clamp(20px, 4vw, 30px);
-}
-
-/* ============================================================
-   🎯 AJUSTE FINAL CONTRA CORTES NO TOPO DAS SEÇÕES
-============================================================ */
-
-/* Esse código reserva um "espaço invisível" acima das seções
-   para evitar que o menu fixo cubra os títulos ao clicar nos links */
 section {
-  scroll-margin-top: 110px; /* espaço reservado */
+  scroll-margin-top: 110px;
 }
 
-/* ============================================================
-   💡 EXPLICAÇÃO
-   Quando você clica em um link, o navegador rola até o elemento
-   mas deixa uma margem de 110px no topo — o mesmo tamanho do menu fixo.
-============================================================ */
+/* Badges nos cards */
+.card-badges{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 10px}
+.badge-chip{display:inline-block;background:rgba(0,255,255,0.18);border:1px solid rgba(0,255,255,0.35);color:#b9ffff;padding:4px 8px;border-radius:999px;font-size:.8rem}
+
+/* Preloader */
+#preloader{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(5,5,10,0.9);z-index:2000;transition:opacity .4s ease,visibility .4s ease}
+body.loading #preloader{display:flex}
+#preloader .spinner{width:36px;height:36px;border-radius:50%;border:3px solid rgba(255,255,255,0.2);border-top-color:#00ffff;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+body.page-loaded #preloader{opacity:0;visibility:hidden}
+
+@media (max-width: 1100px){ .projetos-cards{ grid-template-columns: repeat(3, minmax(220px,1fr)); } }
+@media (max-width: 800px){ .projetos-cards{ grid-template-columns: repeat(2, minmax(220px,1fr)); } }
+@media (max-width: 500px){ .projetos-cards{ grid-template-columns: 1fr; } }
+
+
+body.light #menu { background: rgba(255,255,255,0.9); border-bottom-color: rgba(14,27,43,0.08); }
+body.light .hero-bg { background: radial-gradient(circle at top, #dff3ff, #eef5ff); }
+body.light .section-title { color: #0e6b9a; }
+body.light .btn-glow { color: #fff; background: linear-gradient(90deg,#0e6b9a,#00bcd4); }
+body.light .card-projeto, body.light .contato-card, body.light .certificado-card { background: #ffffff; border-color: rgba(14,27,43,0.08); box-shadow: 0 10px 30px rgba(14,27,43,0.08); }
+body.light .card-content p { color: #2d3a4a; }
+body.light .footer { background: linear-gradient(180deg,#eef5ff,#e7eef8); color:#2d3a4a; }
+body.light .footer h3 { color:#0e6b9a; }
+body.light .footer-links a { color:#0e6b9a; }
+/* Navbar layout fixes */
+#menu { gap: 12px; }
+.nav-links { margin: 0; flex: 1; justify-content: center; }
+/* Tech chips list */
+.tech-list { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:18px }
+.tech-chip { background: rgba(0,255,255,0.15); border:1px solid rgba(0,255,255,0.3); color:#b9ffff; padding:6px 10px; border-radius:999px; font-size:.9rem }
+body.light .tech-chip { background:#e8fafd; border-color:#b7eff7; color:#0e6b9a }
+
+/* Top background glow under navbar */
+#top-glow{ position: fixed; top: 80px; left:0; right:0; height: 140px; pointer-events:none; z-index: 0; }
+#top-glow::before{ content:""; position:absolute; inset:0; filter: blur(40px); background: radial-gradient(60% 80% at 50% 0%, rgba(0,255,255,0.15), rgba(0,0,0,0)); }
+/* Premium tech grid */
+.stack-grid{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:18px;justify-items:center;align-items:stretch;max-width:960px;margin:28px auto 14px}
+.stack-item{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(0,255,255,0.2);border-radius:14px;padding:18px 12px;text-align:center;box-shadow:0 8px 24px rgba(0,255,255,0.06);transition:transform .25s ease, box-shadow .3s ease}
+.stack-item:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 10px 30px rgba(0,255,255,0.25)}
+.stack-item img{height:48px;width:auto;display:block;margin:0 auto}
+.stack-item .label{display:block;margin-top:10px;font-weight:600;color:#00ffff}
+body.light .stack-item{background:#fff;border-color:rgba(14,27,43,0.08);box-shadow:0 8px 24px rgba(14,27,43,0.06)}
+body.light .stack-item .label{color:#0e6b9a}
+@media (max-width: 900px){ .stack-grid{grid-template-columns:repeat(2,minmax(140px,1fr))} }
+@media (max-width: 520px){ .stack-grid{grid-template-columns:1fr} }
+/* Tooltip + Meter for stack */
+.stack-item{position:relative}
+.stack-item::after{content:attr(data-tip); position:absolute; left:50%; bottom:100%; transform:translate(-50%,-8px); white-space:nowrap; background:rgba(0,0,0,0.85); color:#eafcfe; padding:6px 10px; border-radius:8px; font-size:.85rem; opacity:0; pointer-events:none; transition:opacity .2s ease}
+.stack-item:hover::after{opacity:1}
+body.light .stack-item::after{background:#0e1b2b; color:#fff}
+.stack-item .meter{height:6px; border-radius:999px; background:rgba(255,255,255,0.08); margin-top:10px; overflow:hidden}
+.stack-item .meter .fill{height:100%; width:0; background:linear-gradient(90deg,#00ffff,#0078ff)}
+body.light .stack-item .meter{background:rgba(14,27,43,0.1)}
+
+/* Tech chips */
+.tech-list { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:18px }
+.tech-chip { background: rgba(0,255,255,0.15); border:1px solid rgba(0,255,255,0.3); color:#b9ffff; padding:6px 12px; border-radius:999px; font-size:.9rem; cursor:pointer }
+body.light .tech-chip { background:#e8fafd; border-color:#b7eff7; color:#0e6b9a }
+.tech-chip.active{ background: rgba(0,255,255,0.3); border-color: rgba(0,255,255,0.6); color:#fff }
+body.light .tech-chip.active{ background:#d9f4ff; border-color:#74d4ff; color:#0e6b9a }
+/* Sobre Mim refinado */
+.about-list{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px}
+.about-list li{color:#cfeff1}
+body.light .about-list li{color:#36556a}
+.about-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.about-cta .btn-glow{padding:10px 18px}

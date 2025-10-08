@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study â€¢ Lista de Tarefas</title>
+  <link rel="stylesheet" href="../estilo.css" />
+  <style>.cs{max-width:900px;margin:120px auto 80px;padding:0 20px}.cs h1{font-family:'Orbitron',sans-serif;color:#00ffff}.cs section{margin:26px 0}</style>
+</head>
+<body>
+  <nav id="menu" role="navigation" aria-label="Navegação principal">
+  <div class="nav-logo"><a href="../index.html#inicio"><img src="/willejoaoclass/assets/imgs/Logo_Williams_F1.png" alt="Logo"></a></div>
+  <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="../index.html#tecnologias">Tecnologias</a></li>
+    <li><a href="../index.html#projetos">Projetos</a></li>
+    <li><a href="../index.html#sobremim">Sobre mim</a></li>
+    <li><a href="../index.html#certificados">Certificados</a></li>
+    <li><a href="../index.html#falecomigo" class="menu-btn">Fale Comigo</a></li>
+  </ul>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">🌙</button>
+</nav>
+  <main class="cs">
+    <h1>Lista de Tarefas</h1>
+    <section><h2>Resumo</h2><p>Resumo do projeto com objetivos claros, recursos principais e abordagem técnica para entregar uma experiência fluida e responsiva.</p><a class="btn-glow btn" href="../../Novo projeto/index.html">Ver projeto</a></section>
+    <section><h2>Stack</h2><p>HTML/CSS e JavaScript vanilla (manipulaÃ§Ã£o do DOM, armazenamento e renderizaÃ§Ã£o eficiente).</p></section>
+    <section><h2>Desafios</h2><ul><li>Gerenciar estado e filtros sem bibliotecas.</li><li>Garantir acessibilidade nos controles.</li></ul></section>
+    <section><h2>Melhorias Futuras</h2><ul><li>Subtarefas e datas de vencimento.</li><li>SincronizaÃ§Ã£o com backend.</li></ul></section>
+  </main>`n  <script>window.addEventListener('load',()=>document.body.classList.add('page-loaded'));</script>
+<script>(function(){const key="theme-preference";const btn=document.getElementById("theme-toggle");const saved=localStorage.getItem(key);if(saved==="light") document.body.classList.add("light");if(btn){btn.textContent=document.body.classList.contains("light")?"☀️":"🌙";btn.addEventListener("click",()=>{document.body.classList.toggle("light");const l=document.body.classList.contains("light");try{localStorage.setItem(key,l?"light":"dark");}catch(e){}btn.textContent=l?"☀️":"🌙";});}})();</script></body>
+</html>
+
+
+
+
