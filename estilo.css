@@ -56,6 +56,11 @@ body.light #btn-topo { color:#fff }
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-width: 44px; /* maior área clicável */
+  height: 38px;
+  z-index: 1100;
+  box-sizing: border-box;
+  justify-self: end;
 }
 body.light .theme-toggle { color:#0078ff; background:#e8f3ff; border-color: rgba(0,120,255,0.25); }
 
@@ -67,9 +72,10 @@ body.light .theme-toggle { color:#0078ff; background:#e8f3ff; border-color: rgba
   top: 0; left: 0;
   width: 100%;
   height: 80px;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* logo | links | tema */
   align-items: center;
-  justify-content: space-between;
+  column-gap: 12px;
   padding: 0 40px;
   background: rgba(10, 10, 15, 0.7);
   backdrop-filter: blur(10px);
@@ -96,8 +102,8 @@ body.light .theme-toggle { color:#0078ff; background:#e8f3ff; border-color: rgba
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 30px;
-  margin: 50px;
+  gap: 22px;
+  margin: 0;
 }
 
 .nav-links a {
@@ -292,7 +298,7 @@ body.light .theme-toggle { color:#0078ff; background:#e8f3ff; border-color: rgba
   border: 1px solid rgba(0, 255, 255, 0.2);
   border-radius: 18px;
   width: auto;
-  height: 250px;
+  min-height: 300px;
   padding: 25px;
   transition: transform 0.2s ease, box-shadow 0.3s ease, opacity 0.4s ease;
   box-shadow: 0 0 20px rgba(0,255,255,0.05);
@@ -300,6 +306,9 @@ body.light .theme-toggle { color:#0078ff; background:#e8f3ff; border-color: rgba
   transform: translateY(30px);
   animation: fadeInUp 0.8s forwards;
 }
+
+/* Mantém conteúdo interno alinhado e ações no rodapé do card */
+.card-content{ display:flex; flex-direction:column; height:100%; gap:10px }
 
 .card-projeto:hover {
   transform: translateY(-10px) rotateX(2deg) rotateY(-2deg);
@@ -310,23 +319,27 @@ body.light .theme-toggle { color:#0078ff; background:#e8f3ff; border-color: rgba
 
 .card-content h3 {
   color: #00ffff;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
 }
 
 .card-content p {
   color: #ccc;
-  font-size: 0.95rem;
-  margin-bottom: 20px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
 }
 
 .btn-card {
   background: #00ffff;
   color: #000;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
+  align-self: center;
+  margin-top: 12px;
 }
 
 .btn-card:hover {
@@ -596,6 +609,9 @@ body.light .theme-toggle { color:#0078ff; background:#e8f3ff; border-color: rgba
   }
 
   .menu-toggle { display: flex; }
+  /* Garante que o botão de tema não saia da tela em mobile */
+  #menu { padding-right: 64px; }
+  .theme-toggle { position: absolute; right: 14px; top: 21px; }
 
   .projetos-cards,
   .certificados-cards,
@@ -631,8 +647,8 @@ section {
 }
 
 /* Badges nos cards */
-.card-badges{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 10px}
-.badge-chip{display:inline-block;background:rgba(0,255,255,0.18);border:1px solid rgba(0,255,255,0.35);color:#b9ffff;padding:4px 8px;border-radius:999px;font-size:.8rem}
+.card-badges{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 10px;justify-content:center;margin-top:auto}
+.badge-chip{display:inline-block;background:rgba(0,255,255,0.18);border:1px solid rgba(0,255,255,0.35);color:#b9ffff;padding:6px 12px;border-radius:999px;font-size:.9rem}
 
 /* Preloader */
 #preloader{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(5,5,10,0.9);z-index:2000;transition:opacity .4s ease,visibility .4s ease}
@@ -644,6 +660,13 @@ body.page-loaded #preloader{opacity:0;visibility:hidden}
 @media (max-width: 1100px){ .projetos-cards{ grid-template-columns: repeat(3, minmax(220px,1fr)); } }
 @media (max-width: 800px){ .projetos-cards{ grid-template-columns: repeat(2, minmax(220px,1fr)); } }
 @media (max-width: 500px){ .projetos-cards{ grid-template-columns: 1fr; } }
+/* Navbar compaction on mid widths */
+@media (max-width: 1200px){ .nav-links{ gap: 14px } .nav-links a{ font-size: .95rem } }
+
+/* Altura responsiva dos cards de projetos */
+@media (max-width: 1100px){ .card-projeto{ min-height: 280px; } }
+@media (max-width: 800px){ .card-projeto{ min-height: 260px; } }
+@media (max-width: 500px){ .card-projeto{ min-height: 240px; } }
 
 
 body.light #menu { background: rgba(255,255,255,0.9); border-bottom-color: rgba(14,27,43,0.08); }
@@ -657,7 +680,8 @@ body.light .footer h3 { color:#0e6b9a; }
 body.light .footer-links a { color:#0e6b9a; }
 /* Navbar layout fixes */
 #menu { gap: 12px; }
-.nav-links { margin: 0; flex: 1; justify-content: center; }
+.nav-links { margin: 0; flex: 1 1 auto; justify-content: center; min-width: 0; gap: 22px }
+.theme-toggle { flex: 0 0 auto }
 /* Tech chips list */
 .tech-list { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:18px }
 .tech-chip { background: rgba(0,255,255,0.15); border:1px solid rgba(0,255,255,0.3); color:#b9ffff; padding:6px 10px; border-radius:999px; font-size:.9rem }
@@ -697,3 +721,10 @@ body.light .tech-chip.active{ background:#d9f4ff; border-color:#74d4ff; color:#0
 body.light .about-list li{color:#36556a}
 .about-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
 .about-cta .btn-glow{padding:10px 18px}
+
+/* ===== Navbar: tema no canto direito ===== */
+#menu > .theme-toggle { justify-self: end; position: static; }
+@media (max-width: 900px){
+  #menu { padding-right: 64px; }
+  #menu > .theme-toggle { position: absolute; right: 14px; top: 21px; }
+}

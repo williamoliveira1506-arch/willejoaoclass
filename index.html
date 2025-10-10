@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!-- ============================================================
      SOBRE MIM
 ============================================================ -->
@@ -29,13 +29,19 @@
   <link rel="prefetch" href="projetos/conversor.html" target="_blank" rel="noopener" as="document" />
   <!-- Importa o arquivo principal de estilos -->
   <link rel="stylesheet" href="estilo.css">
+  <style>
+    /* Evita flash antes do carregamento */
+    body { opacity: 0 }
+    body.page-loaded { opacity: 1; transition: opacity .5s ease }
+  </style>
+  
 </head>
-<body>
+<body class="loading">
 <div id="preloader"><div class="spinner"></div></div>
 <a href="#projetos" class="skip-link">Pular para projetos</a>
 
 <!-- ============================================================
-     🔝 MENU FIXO (NAVBAR)
+     🧭 MENU FIXO (NAVBAR)
 ============================================================ -->
 <nav id="menu" role="navigation" aria-label="Navegação principal">
   <!-- Logo à esquerda -->
@@ -46,29 +52,30 @@
   </div>
 
   <!-- Botão hamburguer que aparece em telas pequenas -->
-  <div class="menu-toggle" id="menu-toggle">
+  <div class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" tabindex="0">
     <span></span><span></span><span></span>
   </div>
 
   <!-- Links de Navegação -->
   <ul class="nav-links" id="nav-links">
-    <li><a href="#tecnologias">tecnologias</a></li>
+    <li><a href="#tecnologias">Tecnologias</a></li>
     <li><a href="#projetos">Projetos</a></li>
     <li><a href="#sobremim">Sobre mim</a></li>
     <li><a href="#certificados">Certificados</a></li>
     <li><a href="#falecomigo" class="menu-btn">Fale Comigo</a></li>
+    
   </ul>
-  <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">🌙</button>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">??</button>
 </nav><div id="top-glow" aria-hidden="true"></div>
 
 <!-- ============================================================
-     💫 HERO PRINCIPAL (CABEÇALHO)
+     🪐 HERO PRINCIPAL (CABEÇALHO)
 ============================================================ -->
 <header class="hero" id="inicio">
   <div class="hero-content">
-    <h1>Olá,  eu sou <span>William Oliveira</span></h1>
-    <p>DeseçãOláedor Web iniciante apaixonado por criar interfaces modernas e experiências interativas.
-    Explorando o mundo do <strong>HTML, CSS e Git</strong>.</p>
+    <h1>Olá, eu sou <span>William Oliveira</span></h1>
+    <p>Desenvolvedor Web iniciante, apaixonado por criar interfaces modernas e experiências interativas.
+    Explorando o mundo de <strong>HTML, CSS e Git</strong>.</p>
     <a href="#projetos" class="btn-glow">Ver meus projetos</a>
   </div>
 
@@ -78,10 +85,10 @@
 </header>
 
 <!-- ============================================================
-     ⚙️ seção: tecnologias
+     💠 seção: tecnologias
 ============================================================ -->
 <section class="tecnologias" id="tecnologias">
-  <h2>tecnologias</h2>
+  <h2>Tecnologias</h2>
   <p>Ferramentas e linguagens que estou aprendendo:</p>
 
   <div class="stack-grid">
@@ -95,44 +102,38 @@
       <span class="label">CSS3</span>
       <div class="meter"><div class="fill" style="width:0"></div></div>
     </div>
-    <div class="stack-item" data-level="55" data-tip="DOM, eventos e lógicas de UI.">
+    <div class="stack-item" data-level="55" data-tip="Lógica, DOM e interações.">
       <img src="/willejoaoclass/assets/icones/js.svg" alt="JavaScript" />
       <span class="label">JavaScript</span>
       <div class="meter"><div class="fill" style="width:0"></div></div>
     </div>
-    <div class="stack-item" data-level="60" data-tip="Fluxo de trabalho com Git e versionamento.">
+    <div class="stack-item" data-level="60" data-tip="Fluxo de trabalho e versionamento.">
       <img src="/willejoaoclass/assets/icones/git-brand.svg" alt="Git" />
       <span class="label">Git</span>
       <div class="meter"><div class="fill" style="width:0"></div></div>
     </div>
   </div>
 
-  <div class="tech-list">
-    <span class="tech-chip" rOlá="button" aria-pressed="false">localStorage</span>
-    <span class="tech-chip" rOlá="button" aria-pressed="false">Canvas</span>
-    <span class="tech-chip" rOlá="button" aria-pressed="false">Drag &amp; Drop</span>
-    <span class="tech-chip" rOlá="button" aria-pressed="false">Intl API</span>
-    <span class="tech-chip" rOlá="button" aria-pressed="false">Markdown</span>
-    <span class="tech-chip clear" rOlá="button" aria-label="Limpar filtro" title="Limpar filtro">Mostrar todos</span>
+  <div class="tech-list" aria-label="Filtros por tecnologia">
+    <button class="tech-chip" type="button">HTML</button>
+    <button class="tech-chip" type="button">CSS</button>
+    <button class="tech-chip" type="button">JS</button>
+    <button class="tech-chip clear" type="button">Limpar</button>
   </div>
 </section>
 
 <!-- ============================================================
-     💻 seção: PROJETOS
+     📦 PROJETOS
 ============================================================ -->
-<!-- ============================================================
-     SOBRE MIM
-============================================================ -->
-<section class="projetos" id="projetos">
 <section class="projetos" id="projetos">
   <h2 class="section-title">Projetos</h2>
-  <p class="section-subtitle">Meus primeiros passos práticos no deseçãOláimento web · <a href="projetos/index.html" target="_blank" rel="noopener">Case studies</a></p>
+  <p class="section-subtitle">Meus primeiros passos práticos no desenvolvimento web — veja os <a href="projetos/index.html" target="_blank" rel="noopener">Case studies</a></p>
 
   <div class="projetos-cards">
     <div class="card-projeto">
       <div class="card-content">
         <h3>Kanban Board</h3>
-        <p>Arraste e sOláe, prioridades e prazos. Exportar/importar + localStorage.</p>
+        <p>Arraste e solte, prioridades e prazos. Exportar/importar + localStorage.</p>
         <div class="card-badges"><span class="badge-chip">JS</span> <span class="badge-chip">Drag&Drop</span> <span class="badge-chip">localStorage</span></div>
         <a href="projetos/kanban.html" target="_blank" rel="noopener" class="btn-card">Ver projeto</a>
       </div>
@@ -166,13 +167,7 @@
 </section>
 
 <!-- ============================================================
-     📜 CERTIFICADOS
-============================================================ -->
-<!-- ============================================================
-     SOBRE MIM
-============================================================ -->
-<!-- ============================================================
-     SOBRE MIM
+     👤 SOBRE MIM
 ============================================================ -->
 <section class="sobre-mim" id="sobremim">
   <h2 class="section-title">Sobre Mim</h2>
@@ -181,7 +176,7 @@
       <img src="/willejoaoclass/assets/imgs/minha-foto.png" alt="Foto do William Oliveira">
     </div>
     <div class="texto-sobre">
-      <p>Sou <strong>William Oliveira</strong>, desenvolvedor front‑end em início de carreira. Gosto de transformar ideias em interfaces limpas, acessíveis e rápidas, evoluindo a cada projeto.</p>
+      <p>Sou <strong>William Oliveira</strong>, desenvolvedor front-end em início de carreira. Gosto de transformar ideias em interfaces limpas, acessíveis e rápidas, evoluindo a cada projeto.</p>
       <ul class="about-list">
         <li>HTML5 semântico e acessível</li>
         <li>CSS3 responsivo (Flexbox, Grid, animações)</li>
@@ -191,7 +186,7 @@
       </ul>
       <div class="sobre-detalhes">
         <p><strong>📍 Local:</strong> Brasil</p>
-        <p><strong>🎯 Foco:</strong> Front‑end e design responsivo</p>
+        <p><strong>🎯 Foco:</strong> Front-end e design responsivo</p>
         <p><strong>🚀 Objetivo:</strong> Dominar JavaScript e criar projetos reais</p>
       </div>
       <div class="about-cta">
@@ -200,7 +195,12 @@
       </div>
     </div>
   </div>
-</section><section class="certificados" id="certificados">
+</section>
+
+<!-- ============================================================
+     🎓 CERTIFICADOS
+============================================================ -->
+<section class="certificados" id="certificados">
   <h2 class="section-title">Certificados e Cursos</h2>
   <p class="section-subtitle">Algumas das formações que venho conquistando ao longo da jornada</p>
 
@@ -208,13 +208,13 @@
     <div class="certificado-card">
       <img src="/willejoaoclass/assets/icones/arquivo-html.png" alt="HTML" />
       <h3>HTML & CSS Básico</h3>
-      <p>FreeCodeCamp – 2025</p>
+      <p>FreeCodeCamp - 2025</p>
     </div>
 
     <div class="certificado-card">
       <img src="/willejoaoclass/assets/icones/GIT.png" alt="Git" />
       <h3>Git e Versionamento</h3>
-      <p>Udemy – 2025</p>
+      <p>Udemy - 2025</p>
     </div>
 
     <div class="certificado-card">
@@ -245,8 +245,8 @@
       <div class="neon-border"></div>
       <img src="/willejoaoclass/assets/icones/whatsapp-brand.svg" alt="WhatsApp" />
       <h3>WhatsApp</h3>
-      <p>Converseçãomigo diretamente</p>
-      <a href="https://api.whatsapp.com/send/?phone=19996038016" target="_blank" class="btn-glow">Abrir</a>
+      <p>Converse comigo diretamente</p>
+      <a href="https://api.whatsapp.com/send/?phone=19996038016" target="_blank" class="btn-glow" rel="noopener">Abrir</a>
     </div>
 
     <div class="contato-card">
@@ -254,20 +254,20 @@
       <img src="/willejoaoclass/assets/icones/linkedin.svg" alt="LinkedIn" />
       <h3>LinkedIn</h3>
       <p>Me acompanhe profissionalmente</p>
-      <a href="https://www.linkedin.com/in/william-crazy/" target="_blank" class="btn-glow">Visitar</a>
+      <a href="https://www.linkedin.com/in/william-crazy/" target="_blank" class="btn-glow" rel="noopener">Visitar</a>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     ⚡ RODAPÉ
+     🔻 RODAPÉ
 ============================================================ -->
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-about">
       <h3>Sobre William</h3>
-      <p>DeseçãOláedor front-end iniciante criando sites modernos e responsivos.
-      Sempre aprendendo e evOláindo com cada projeto.</p>
+      <p>Desenvolvedor front-end iniciante criando sites modernos e responsivos.
+      Sempre aprendendo e evoluindo com cada projeto.</p>
     </div>
 
     <div class="footer-links">
@@ -284,74 +284,78 @@
     <div class="footer-social">
       <h3>Redes Sociais</h3>
       <div class="social-icons-footer">
-        <a href="https://github.com/william-crazy" target="_blank"><img src="/willejoaoclass/assets/icones/github-mark.svg" alt="GitHub"></a>
-        <a href="https://www.instagram.com/_willcrazy/" target="_blank"><img src="/willejoaoclass/assets/icones/instagram.svg" alt="Instagram"></a>
+        <a href="https://github.com/william-crazy" target="_blank" rel="noopener"><img src="/willejoaoclass/assets/icones/github-mark.svg" alt="GitHub"></a>
+        <a href="https://www.instagram.com/_willcrazy/" target="_blank" rel="noopener"><img src="/willejoaoclass/assets/icones/instagram.svg" alt="Instagram"></a>
       </div>
     </div>
   </div>
 
   <div class="footer-bottom">
-    <p>&copy; 2025 William Oliveira — Todos os direitos reservados.</p>
+    <p>&copy; 2025 William Oliveira - Todos os direitos reservados.</p>
   </div>
 </footer>
 
 <!-- ============================================================
-     🔼 BOTÃO VOláAR AO TOPO (CORRIGIDO)
+     ⬆️ BOTÃO VOLTAR AO TOPO
 ============================================================ -->
-<button id="btn-topo" title="VOláar ao topo">↑</button>
+<button id="btn-topo" title="Voltar ao topo" aria-label="Voltar ao topo">↑</button>
 
 <!-- ============================================================
-     🧠 SCRIPT FINAL
+     🧩 SCRIPT FINAL
 ============================================================ -->
 <script>
+  // Navbar: muda estilo ao rolar
   const menu = document.getElementById('menu');
-  window.addEventListener('scrOlá', () => {
-    menu.classList.toggle('scrOláed', window.scrOláY > 50);
+  window.addEventListener('scroll', () => {
+    menu.classList.toggle('scrolled', window.scrollY > 50);
   });
 
+  // Menu mobile abre/fecha
   const toggle = document.getElementById('menu-toggle');
   const links = document.getElementById('nav-links');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  toggle?.addEventListener('click', () => links.classList.toggle('open'));
+  toggle?.addEventListener('keypress', (e) => { if (e.key === 'Enter') links.classList.toggle('open'); });
 
-  const btnTopo = document.getElementById("btn-topo");
-  window.addEventListener("scrOlá", () => {
-    btnTopo.classList.toggle("show", window.scrOláY > 400);
+  // Botão voltar ao topo
+  const btnTopo = document.getElementById('btn-topo');
+  window.addEventListener('scroll', () => {
+    btnTopo.classList.toggle('show', window.scrollY > 400);
   });
-  btnTopo.addEventListener("click", () => {
-    window.scrOláTo({ top: 0, behavior: "smooth" });
+  btnTopo.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  // Smooth scroll com compensação do menu fixo e fechar menu mobile
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", e => {
-      const href = anchor.getAttribute("href");
-      if (!href.startsWith("#") || href === "#") return;
-
-      e.preventDefault();
+    anchor.addEventListener('click', e => {
+      const href = anchor.getAttribute('href') || '';
+      if (!href.startsWith('#') || href === '#') return;
       const target = document.querySelector(href);
       if (!target) return;
+      e.preventDefault();
 
-      const menuHeight = document.getElementById("menu").offsetHeight;
-      const extraOffset = 30;
-      const offset = target.offseçãop - menuHeight - extraOffset;
+      // Opção 1: usar scroll-margin-top do CSS
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-      window.scrOláTo({ top: offset, behavior: "smooth" });
+      // Fecha o menu mobile após navegar
+      links.classList.remove('open');
     });
   });
 
-  window.addEventListener("load", () => document.body.classList.add("page-loaded"));
+  // Preloader e estado de carregamento da página
+  window.addEventListener('load', () => document.body.classList.add('page-loaded'));
 
   // Tema (dark/light) com persistência
   (function(){
     const key = 'theme-preference';
-    const btn = document.getElementById('theme-toggle');
+    const btn = document.querySelector('.nav-links .theme-toggle') || document.getElementById('theme-toggle');
     const saved = localStorage.getItem(key);
     if (saved === 'light') document.body.classList.add('light');
-    btn.textContent = (document.body.classList.contains("light") ? "☀️" : "🌙");
+    btn.textContent = (document.body.classList.contains('light') ? '☀️' : '🌙');
     btn.addEventListener('click', () => {
       document.body.classList.toggle('light');
-      const light = document.body.classList.contains('light');
-      localStorage.setItem(key, document.body.classList.contains("light") ? "light" : "dark");
-      btn.textContent = (document.body.classList.contains("light") ? "☀️" : "🌙");
+      localStorage.setItem(key, document.body.classList.contains('light') ? 'light' : 'dark');
+      btn.textContent = (document.body.classList.contains('light') ? '☀️' : '🌙');
     });
   })();
 
@@ -382,13 +386,17 @@
     const cards = document.querySelectorAll('.card-projeto');
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
-    }, { threshOlá: 0.2 });
-    cards.forEach(c => { io.observe(c); c.addEventListener('mousemove', (ev) => {
-      const b = c.getBoundingClientRect();
-      const cx = (ev.clientX - b.left) / b.width - 0.5;
-      const cy = (ev.clientY - b.top) / b.height - 0.5;
-      c.style.transform = `rotateX(${(-cy*4).toFixed(2)}deg) rotateY(${(cx*4).toFixed(2)}deg) translateY(-6px)`;
-    }); c.addEventListener('mouseleave', () => { c.style.transform=''; }); });
+    }, { threshold: 0.2 });
+    cards.forEach(c => {
+      io.observe(c);
+      c.addEventListener('mousemove', (ev) => {
+        const b = c.getBoundingClientRect();
+        const cx = (ev.clientX - b.left) / b.width - 0.5;
+        const cy = (ev.clientY - b.top) / b.height - 0.5;
+        c.style.transform = `rotateX(${(-cy*4).toFixed(2)}deg) rotateY(${(cx*4).toFixed(2)}deg) translateY(-6px)`;
+      });
+      c.addEventListener('mouseleave', () => { c.style.transform=''; });
+    });
   })();
 </script>
 
@@ -401,14 +409,14 @@
       document.body.classList.remove('loading');
     });
     // Fix theme toggle safely
-    const themeBtn = document.getElementById('theme-toggle');
+    const themeBtn = document.querySelector('.nav-links .theme-toggle') || document.getElementById('theme-toggle');
     if (themeBtn) {
-      themeBtn.textContent = (document.body.classList.contains("light") ? "☀️" : "🌙");
+      themeBtn.textContent = (document.body.classList.contains('light') ? '☀️' : '🌙');
       themeBtn.addEventListener('click', () => {
         document.body.classList.toggle('light');
         const lightOn = document.body.classList.contains('light');
         try { localStorage.setItem('theme-preference', lightOn ? 'light' : 'dark'); } catch (e) {}
-        themeBtn.textContent = (document.body.classList.contains("light") ? "☀️" : "🌙");
+        themeBtn.textContent = (lightOn ? '☀️' : '🌙');
       });
     }
   } catch (e) {}
@@ -416,6 +424,8 @@
 
 </body>
 </html>
+
+<!-- Pós-scripts opcionais -->
 <script>
 try{
   // Animate skill meters
@@ -427,7 +437,7 @@ try{
     });
   });
   // Project filtering by tech chips
-  const norm = s => (s||'').tOláwerCase().replace(/[^a-z0-9]+/g, '');
+  const norm = s => (s||'').toLowerCase().replace(/[^a-z0-9]+/g, '');
   const cards = [...document.querySelectorAll('.card-projeto')];
   cards.forEach(c => {
     const tags = [...c.querySelectorAll('.card-badges .badge-chip')].map(b=>norm(b.textContent));
@@ -446,12 +456,3 @@ try{
   }));
 }catch(e){}
 </script>
-
-
-
-
-
-
-
-
-
